@@ -3,7 +3,7 @@ from io import BytesIO
 import os
 import shutil
 import zipfile
-from pptx import Presentation
+from pptx import Presentation # type: ignore
 
 st.title("PPT Image Ripper")
 
