@@ -7,9 +7,10 @@ from pptx import Presentation # type: ignore
 
 st.title("PPT Image Ripper")
 
-def extract_images(pptx_path, output_path):
+def extract_images(pptx_file, output_path):
 
-    pres = Presentation(pptx_path)
+    pres = Presentation(pptx_file)
+    pptx_name = pptx_file.name
     if not os.path.exists(output_path):
         os.mkdir(output_path)
     image_count = 0
@@ -35,7 +36,7 @@ def extract_images(pptx_path, output_path):
                     alt_file.write(f'{image_filename}: {alt_text}\n')
                     image_count += 1
     alt_file.close()
-    return f'Extracted {image_count} images from {pptx_path}'
+    return f'Extracted {image_count} images from {pptx_name}'
     
 
 def create_zip(dir_path):
@@ -65,7 +66,7 @@ def main():
     if(submitted):
         
         st.write(uploaded_files.name)
-        extracted = extract_images(uploaded_files.name, Output_Path)
+        extracted = extract_images(pptx_file=uploaded_files, output_path=Output_Path)
         st.write(extracted)
         if extracted:
             zip_buffer = create_zip(Output_Path)
