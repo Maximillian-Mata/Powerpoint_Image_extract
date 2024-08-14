@@ -22,8 +22,10 @@ def extract_images(pptx_file, output_path):
                 if shape.shape_type==13:
                     image = shape.image
                     image_bytes = image.blob
-
-                    image_filename = f'image_{image_count}.{image.ext}'
+                    if(image_count < 10):
+                        image_filename = f'image_0{image_count}.{image.ext}'
+                    else:
+                        image_filename = f'image_{image_count}.{image.ext}'
                     image_path = os.path.join(output_path, image_filename)
 
                     with open(image_path, 'wb') as f:
