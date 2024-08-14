@@ -63,7 +63,7 @@ def main():
     submitted = False
     with st.form("File Upload"):
         st.write("Upload your desired powerpoint file")
-        uploaded_files = st.file_uploader(label="Your PPTX file", type=['ppt','pptx'], accept_multiple_files=False)
+        uploaded_files = st.file_uploader(label="Your PPTX file", type=['pptx'], accept_multiple_files=False)
         submitted = st.form_submit_button('Submit')
     if(submitted):
         
